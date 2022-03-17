@@ -1,24 +1,26 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useEffect, useState } from 'react';
 import './App.css';
+import Guess from './Guess';
+import Header from './Header';
+import { words } from './words';
 
 function App() {
+
+const [ word, setWord ] = useState<String>("");
+
+useEffect(() => {
+
+  setWord(words[Math.floor(Math.random() * words.length)]);
+  
+}, [] );
+
+console.log(word);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <Guess />
+      
     </div>
   );
 }
